@@ -1,0 +1,6 @@
+1. Inicio  
+2. Se pide el costo por kilovatio/hora.  
+3. Se pide el número de kilovatios consumidos en el mes.  
+4. Se calcula el valor total de la planilla multiplicando el costo por kilovatio/hora por el número de kilovatios consumidos.  
+5. Se muestra el valor total a pagar en la planilla de luz.  
+6. Fin
