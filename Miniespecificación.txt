@@ -1,0 +1,93 @@
+Miniespecificación del sistema de venta de libros.
+
+1.	INICIO
+2.	DECLARAR NOMBRES como ARREGLO de Cadenas.
+3.	DECLARAR APELLIDOS como ARREGLO de Cadenas.
+4.	DECLARAR CANTIDADES_LIBROS como ARREGLO de Enteros.
+5.	DECLARAR PRECIOS_UNITARIOS como ARREGLO de Reales.
+6.	DECLARAR TOTALES_PAGAR como ARREGLO de Reales.
+7.	DECLARAR NUM_VENTAS, CONTADOR_VENTAS como Enteros
+8.	MOSTRAR "Sistema de Registro de Ventas de Libros”
+9.	REPETIR HASTA QUE (NUM_VENTAS > 0):
+10.	SOLICITAR "¿Cuántas ventas desea registrar?" y LEER NUM_VENTAS.
+11.	INICIALIZAR CONTADOR_VENTAS $\leftarrow$ 0.
+12.	MIENTRAS (CONTADOR_VENTAS < NUM_VENTAS) HACER:
+13.	 MOSTRAR "--- Registro de Venta #" (CONTADOR_VENTAS + 1) "---".
+14.	LLAMAR a la subrutina PROCESAR_COMPRA.
+15.	 INCREMENTAR CONTADOR_VENTAS $\leftarrow$
+16.	CONTADOR_VENTAS + 1.
+17.	FIN MIENTRAS.
+
+Subrutina: PROCESAR_COMPRA
+
+18.	SOLICITAR y LEER NOMBRE_CLIENTE.
+19.	SOLICITAR y LEER APELLIDO_CLIENTE.
+20.	REPETIR HASTA QUE (CANTIDAD > 0):  
+21.	SOLICITAR "Cantidad de libros a comprar:" y LEER CANTIDAD.
+22.	REPETIR HASTA QUE (PRECIO > 0):
+23.	SOLICITAR "Precio unitario del libro:" y LEER PRECIO.
+24.	CALCULAR Totales Parciales:
+25.	SUBTOTAL $\leftarrow$ CANTIDAD $\times$ PRECIO.
+26.	TASA_DESCUENTO $\leftarrow$ LLAMAR a CALCULAR_DESCUENTO (CANTIDAD).
+27.	MONTO_DESCUENTO $\leftarrow$ SUBTOTAL $\times$ TASA_DESCUENTO.
+28.	TOTAL_A_PAGAR $\leftarrow$ SUBTOTAL $-$ MONTO_DESCUENTO.
+29.	IMPRIMIR "Total a Pagar:", TOTAL_A_PAGAR.
+  
+ Almacenamiento en Arreglos (Listas Paralelas):
+
+31.	AÑADIR NOMBRE_CLIENTE a NOMBRES.
+32.	AÑADIR APELLIDO_CLIENTE a APELLIDOS.
+33.	AÑADIR CANTIDAD a CANTIDADES_LIBROS.
+34.	AÑADIR PRECIO a PRECIOS_UNITARIOS.
+35.	AÑADIR TOTAL_A_PAGAR a TOTALES_PAGAR.
+36.     CALCULAR_DESCUENTO(CANTIDAD)
+37.	SI CANTIDAD es igual a 1 ENTONCES:
+38.	RETORNAR 0.05.
+39.	SINO SI (CANTIDAD $\ge$ 2 Y CANTIDAD $\le$ 3) ENTONCES:
+40.	RETORNAR 0.10.
+41.	SINO SI (CANTIDAD $\ge$ 4 Y CANTIDAD $\le$ 5) ENTONCES:
+42.	RETORNAR 0.30.
+43.	SINO SI CANTIDAD $\ge$ 6 ENTONCES:
+44.	RETORNAR 0.40.
+45.	SINO:
+46.	RETORNAR 0.00.
+47.	FIN SI.
+
+   Reporte Final y Análisis
+
+48.	SI (Longitud de NOMBRES > 0) ENTONCES:
+49.	IMPRIMIR "\n--- REPORTE FINAL DE VENTAS ---".
+50.	LLAMAR a la subrutina MOSTRAR_DETALLE_COMPRAS.
+51.	LLAMAR a la subrutina ANALIZAR_VENTAS.
+52.	SINO:
+53.	IMPRIMIR "No se registraron ventas.".
+54.	FIN SI.
+ 
+  Subrutina: MOSTRAR_DETALLE_COMPRAS
+
+55.	IMPRIMIR Encabezados (Cliente, Cantidad, Precio Unitario, Total a Pagar).
+56.	PARA i desde 0 hasta (Longitud de NOMBRES $- 1$) HACER:
+57.	IMPRIMIR NOMBRES[i], APELLIDOS[i], CANTIDADES_LIBROS[i], PRECIOS_UNITARIOS[i], TOTALES_PAGAR[i].
+58.	FIN PARA.
+  
+   Subrutina: ANALIZAR_VENTAS
+
+59.	CALCULAR Promedio:
+60.	SUMA_TOTAL $\leftarrow$ Suma de todos los elementos en TOTALES_PAGAR.
+61.	NUM_CLIENTES $\leftarrow$ Longitud de TOTALES_PAGAR.
+62.	PROMEDIO $\leftarrow$ SUMA_TOTAL / NUM_CLIENTES.
+63.	IMPRIMIR "Promedio de ventas:", PROMEDIO.
+64.	Venta Máxima:
+65.	VENTA_MAXIMA $\leftarrow$ Máximo valor en TOTALES_PAGAR.
+66.	INDICE_MAX $\leftarrow$ Posición de VENTA_MAXIMA en TOTALES_PAGAR.
+67.	IMPRIMIR "Venta más alta:", VENTA_MAXIMA, " (Cliente:", NOMBRES[INDICE_MAX], APELLIDOS[INDICE_MAX], ")".
+68.	Venta Mínima:
+69.	VENTA_MINIMA $\leftarrow$ Mínimo valor en TOTALES_PAGAR.
+70.	INDICE_MIN $\leftarrow$ Posición de VENTA_MINIMA en TOTALES_PAGAR.
+
+
+71.	 IMPRIMIR "Venta más baja:", VENTA_MINIMA, " (Cliente:", NOMBRES[INDICE_MIN], APELLIDOS[INDICE_MIN], ")".
+
+72.	FIN SUBRUTINA.
+73.	Fin del Algoritmo
+74.	 Fin
